@@ -1,0 +1,16 @@
+{
+  "name": "gestor360v7",
+  "version": "1.0.0",
+  "description": "Gestor360V7 - Claude's legendary functional version",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev"
+  },
+  "dependencies": {
+    "electron": "latest",
+    "simple-git": "latest"
+  },
+  "author": "Claude",
+  "license": "MIT"
+}

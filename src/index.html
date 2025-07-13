@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Gestor360V7 - Sistema de Plantillas Educativas</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <aside id="sidebar">
+      <header class="sidebar-header">
+        <h2>Gestor360V7</h2>
+        <p class="subtitle">Claude's Legendary Version</p>
+      </header>
+      <div class="sidebar-content">
+        <h3>📂 Carpetas</h3>
+        <ul id="folder-list"></ul>
+      </div>
+      <div class="sidebar-actions">
+        <button id="btn-nueva-entrada" class="primary-btn">
+          <span>✨</span> Nueva Entrada
+        </button>
+        <button id="btn-sincronizar" class="sync-btn">
+          <span>🔄</span> Sincronizar
+        </button>
+      </div>
+    </aside>
+    
+    <main id="content">
+      <div class="content-header">
+        <h2 id="current-folder">Seleccione una carpeta</h2>
+      </div>
+      
+      <div class="file-section">
+        <h3>📄 Documentos</h3>
+        <ul id="file-list"></ul>
+      </div>
+      
+      <div id="editor-container" class="hidden">
+        <div class="editor-header">
+          <h3>Editor de Markdown</h3>
+        </div>
+        <textarea id="file-content" spellcheck="false" placeholder="Escribe tu contenido aquí..."></textarea>
+        <div class="editor-actions">
+          <button id="btn-guardar" class="primary-btn">💾 Guardar</button>
+          <button id="btn-cerrar-editor" class="secondary-btn">✖️ Cerrar</button>
+        </div>
+      </div>
+      
+      <div id="kanban-container" class="hidden"></div>
+    </main>
+  </div>
+  
+  <!-- Modal Nueva Entrada con Sistema de Plantillas -->
+  <div id="modal-nueva-entrada" class="modal hidden">
+    <div class="modal-content template-modal">
+      <h3>📝 Crear Nueva Entrada</h3>
+      <form id="form-nueva-entrada">
+        <div id="form-campos">
+          <!-- El contenido se genera dinámicamente -->
+        </div>
+        <div class="modal-actions">
+          <button type="submit" class="primary-btn">Crear</button>
+          <button type="button" id="btn-cerrar-modal" class="secondary-btn">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <script src="renderer.js"></script>
+</body>
+</html>
