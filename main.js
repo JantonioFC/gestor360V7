@@ -4,8 +4,8 @@ const path = require('path');
 const fs = require('fs').promises;
 const simpleGit = require('simple-git');
 
-// Ruta del repositorio local (personalizable)
-const REPO_PATH = path.resolve(process.env.HOME || process.env.USERPROFILE, 'Documents/gestor360v7_repo');
+// Ruta del repositorio local - ahora usa el directorio actual de la aplicación
+const REPO_PATH = __dirname; // Usar directorio de la aplicación
 
 let mainWindow;
 
@@ -116,6 +116,32 @@ ipcMain.handle('listar-archivos', (_, carpeta) => listarArchivosMD(carpeta));
 ipcMain.handle('leer-archivo', (_, carpeta, archivo) => leerArchivo(carpeta, archivo));
 ipcMain.handle('guardar-archivo', (_, carpeta, nombreArchivo, contenido, esNuevo) => guardarArchivo(carpeta, nombreArchivo, contenido, esNuevo));
 ipcMain.handle('sync-git', syncGit);
+
+// Handler para crear archivo desde plantilla
+ipcMain.handle('create-file-from-template', async (event, folderName, templateName, title) => {
+  try {
+    console.log('Creando archivo desde plantilla:', {folderName, templateName, title});
+    
+    // Generar nombre de archivo
+    const fecha = new Date().toISOString().slice(0, 10);
+    const tituloLimpio = title.replace(/[<>:"/\\|?*]/g, '-').replace(/\s+/g, '_');
+    const nombreArchivo = `${templateName.replace(/\s+/g, '_')}_${fecha}_${tituloLimpio}.md`;
+    
+    // El contenido real de la plantilla se maneja en el renderer
+    // Aquí solo confirmamos que el archivo se puede crear
+    return { success: true, fileName: nombreArchivo };
+  } catch (error) {
+    console.error('Error en create-file-from-template:', error);
+    return { success: false, error: error.message };
+  }
+});
+
+// Handler adicional para abrir DevTools (desarrollo)
+ipcMain.handle('open-devtools', () => {
+  if (mainWindow) {
+    mainWindow.webContents.openDevTools();
+  }
+});
 
 app.whenReady().then(() => {
   createWindow();

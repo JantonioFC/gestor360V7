@@ -6,4 +6,6 @@ contextBridge.exposeInMainWorld('api', {
   leerArchivo: (carpeta, archivo) => ipcRenderer.invoke('leer-archivo', carpeta, archivo),
   guardarArchivo: (carpeta, nombreArchivo, contenido, esNuevo) => ipcRenderer.invoke('guardar-archivo', carpeta, nombreArchivo, contenido, esNuevo),
   syncGit: () => ipcRenderer.invoke('sync-git'),
+  createFileFromTemplate: (folderName, templateName, title) => ipcRenderer.invoke('create-file-from-template', folderName, templateName, title),
+  openDevTools: () => ipcRenderer.invoke('open-devtools'),
 });

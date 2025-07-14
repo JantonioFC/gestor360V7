@@ -1,16 +1,44 @@
 {
   "name": "gestor360v7",
   "version": "1.0.0",
-  "description": "Gestor360V7 - Claude's legendary functional version",
+  "description": "Gestor360V7 - Sistema de Plantillas Educativas con Electron",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "dev": "electron . --dev"
+    "dev": "electron . --dev",
+    "test": "node tests/test-funcionalidad.js",
+    "install-deps": "npm install",
+    "clean": "rm -rf node_modules package-lock.json && npm install",
+    "clean-win": "rmdir /s /q node_modules && del package-lock.json && npm install"
   },
+  "keywords": [
+    "electron",
+    "markdown",
+    "editor",
+    "plantillas",
+    "educacion",
+    "gestor360"
+  ],
   "dependencies": {
     "electron": "latest",
     "simple-git": "latest"
   },
-  "author": "Claude",
-  "license": "MIT"
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tu-usuario/gestor360v7.git"
+  },
+  "author": {
+    "name": "Claude & Usuario",
+    "email": "gestor360@example.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tu-usuario/gestor360v7/issues"
+  },
+  "homepage": "https://github.com/tu-usuario/gestor360v7#readme",
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  }
 }
